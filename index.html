@@ -6,12 +6,12 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#0A0E27">
+    <meta name="theme-color" content="#0d0d0d">
     <title>AnwendungsEntwicklung von lRam</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Prism.js for syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -24,7 +24,6 @@
             <div class="nav-container">
                 <a href="#hero" class="nav-logo">Novum Initium</a>
                 <div class="nav-right">
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
                     <div class="lang-toggle">
                         <span class="lang-link active">DE</span> |
                         <a href="index-en.html" class="lang-link">EN</a>
@@ -44,18 +43,18 @@
     <main>
         <!-- Hero section start -->
         <section id="hero" class="hero">
-            <canvas id="particles-canvas"></canvas>
             <div class="hero-container">
                 <div class="hero-content">
-                    <img src="assets/logo.png" alt="Novum Initium Logo" class="hero-logo">
-                    <h1 class="hero-title">&lt;\Anwendungs<span class="code-case">Entwicklung</span> von <span class="code-var">lRam</span>\&gt;</h1>
-                    <p class="hero-disclaimer">Novum Initium Anwendungsentwicklung von lRam ist ein persönliches Portfolio-Projekt und keine eingetragene Firma. Diese Website wurde ausschließlich zu Lern- und Präsentationszwecken erstellt.</p>
-                    <p class="hero-subtitle">Persönliches Portfolio & Lernlabor eines angehenden Softwareentwicklers.</p>
+                    <h1 class="hero-title">Anwendungsentwicklung von lRam</h1>
+                    <p class="hero-subtitle">Persönliches Portfolio & Lernlabor eines angehenden Softwareentwicklers</p>
                     <p class="hero-description">
-                              Ich befinde mich derzeit in der Umschulung zum Fachinformatiker Anwendungsentwicklung in Deutschland
-                                        und baue meine Fähigkeiten in der Softwareentwicklung auf.
+                        Ich befinde mich derzeit in der Umschulung zum Fachinformatiker Anwendungsentwicklung in Deutschland
+                        und baue meine Fähigkeiten in der Softwareentwicklung auf.
                     </p>
-                    <a href="#projects" class="hero-button">Meine Projekte ansehen</a>
+                    <p class="hero-disclaimer">Novum Initium Anwendungsentwicklung von lRam ist ein persönliches Portfolio-Projekt und keine eingetragene Firma. Diese Website wurde ausschließlich zu Lern- und Präsentationszwecken erstellt.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="hero-button hero-button-primary">Meine Projekte ansehen</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -393,8 +392,8 @@
             <div class="coming-soon-content">
                 <div style="text-align: center; padding: 3rem 1rem;">
                     <div style="font-size: 4rem; margin-bottom: 1rem;">🚀</div>
-                    <h3 style="color: var(--accent-muted); margin-bottom: 1rem;">Demnächst verfügbar!</h3>
-                    <p style="color: var(--text-light); font-size: 1.1rem; line-height: 1.6;">
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Demnächst verfügbar!</h3>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">
                         Dieses Projekt befindet sich derzeit in Entwicklung im Rahmen meines Python-Lernprogramms.
                         Schauen Sie bald wieder vorbei für Updates und Demos!
                     </p>
@@ -412,8 +411,8 @@
             <div class="coming-soon-content">
                 <div style="text-align: center; padding: 3rem 1rem;">
                     <div style="font-size: 4rem; margin-bottom: 1rem;">📋</div>
-                    <h3 style="color: var(--accent-muted); margin-bottom: 1rem;">Demnächst verfügbar!</h3>
-                    <p style="color: var(--text-light); font-size: 1.1rem; line-height: 1.6;">
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Demnächst verfügbar!</h3>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">
                         Dokumentation und Beispiele von Git-Workflows, Branching-Strategien und Kollaborationspraktiken,
                         die während der Softwareentwicklungs-Schulung erlernt wurden. Demnächst verfügbar!
                     </p>
