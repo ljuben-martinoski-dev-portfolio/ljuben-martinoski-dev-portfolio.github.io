@@ -19,6 +19,13 @@
     <link rel="dns-prefetch" href="//github.com">
 </head>
 <body>
+    <div class="page-loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
     <header>
         <nav class="navbar">
             <div class="nav-container">
@@ -61,7 +68,7 @@
         <!-- Hero section end -->
 
         <!-- About section start -->
-        <section id="about" class="section">
+        <section id="about" class="section animate-on-scroll">
             <div class="container">
                 <h2 class="section-title">Über mich</h2>
                 <div class="about-content">
@@ -80,10 +87,10 @@
         <!-- About section end -->
 
         <!-- Skills section start -->
-        <section id="skills" class="section">
+        <section id="skills" class="section animate-on-scroll">
             <div class="container">
                 <h2 class="section-title">Fähigkeiten & Werkzeuge</h2>
-                <div class="skills-grid">
+                <div class="skills-grid stagger-children">
                     <span class="skill-tag">Python</span>
                     <span class="skill-tag">HTML</span>
                     <span class="skill-tag">CSS</span>
@@ -105,10 +112,10 @@
         <!-- Skills section end -->
 
         <!-- Projects section start -->
-        <section id="projects" class="section">
+        <section id="projects" class="section animate-on-scroll">
             <div class="container">
                 <h2 class="section-title">Projekte</h2>
-                <div class="projects-grid">
+                <div class="projects-grid stagger-children">
                     <div class="project-card" data-modal-target="warehouse-modal">
                         <h3 class="project-title">LagerverwaltungsApp (v1.5.0)</h3>
                         <p class="project-description">
@@ -190,7 +197,7 @@
         <!-- Projects section end -->
 
         <!-- Contact section start -->
-        <section id="contact" class="section">
+        <section id="contact" class="section animate-on-scroll">
             <div class="container">
                 <h2 class="section-title">Kontakt</h2>
                 <div class="contact-content">
@@ -206,7 +213,7 @@
         <!-- Contact section end -->
 
         <!-- Privacy Notice section start -->
-        <section id="privacy" class="section privacy-section">
+        <section id="privacy" class="section privacy-section animate-on-scroll">
             <div class="container">
                 <h2 class="section-title">Datenschutz & Rechtliches</h2>
                 <div class="privacy-content">
@@ -240,6 +247,10 @@
             <p>&copy; 2025 Novum Initium Application Development by lRam</p>
             <p>made by Martinoski Ljuben</p>
             <a href="#hero" class="footer-link">Nach oben</a>
+            <div class="footer-social">
+                <a href="https://github.com/ljuben-martinoski" class="social-icon" target="_blank" rel="noopener noreferrer">GH</a>
+                <span class="social-icon">LI</span>
+            </div>
         </div>
     </footer>
 
