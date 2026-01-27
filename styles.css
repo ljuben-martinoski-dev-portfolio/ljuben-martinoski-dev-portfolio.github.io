@@ -363,10 +363,138 @@ p {
     display: none;
 }
 
+.hero-title-wrapper {
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+}
+
+.terminal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 26, 0.95);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 10;
+    box-shadow: 
+        0 0 30px rgba(99, 102, 241, 0.2),
+        inset 0 0 20px rgba(99, 102, 241, 0.05);
+}
+
+.terminal-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.5);
+}
+
+.terminal-dot:nth-child(1) {
+    background: rgba(239, 68, 68, 0.6);
+}
+
+.terminal-dot:nth-child(2) {
+    background: rgba(234, 179, 8, 0.6);
+}
+
+.terminal-dot:nth-child(3) {
+    background: rgba(34, 197, 94, 0.6);
+}
+
+.terminal-title {
+    margin-left: auto;
+    color: rgba(99, 102, 241, 0.8);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.terminal-content {
+    min-height: 80px;
+    margin-bottom: 20px;
+}
+
+.terminal-line {
+    color: #06b6d4;
+    font-size: 14px;
+    line-height: 1.8;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.terminal-line.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.terminal-line::before {
+    content: '$ ';
+    color: rgba(99, 102, 241, 0.8);
+    margin-right: 8px;
+}
+
+.terminal-progress {
+    margin-top: 20px;
+}
+
+.progress-label {
+    color: rgba(99, 102, 241, 0.9);
+    font-size: 12px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+    width: 0%;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.progress-percent {
+    color: #06b6d4;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+}
+
 .hero-title {
     font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 700;
-    margin-bottom: var(--space-4);
     line-height: 1.1;
     letter-spacing: -0.02em;
     background: linear-gradient(135deg, var(--accent-primary), #8b5cf6, #06b6d4);
@@ -375,6 +503,14 @@ p {
     background-clip: text;
     background-size: 200% auto;
     animation: gradientShift 3s ease infinite;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.hero-title.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @keyframes gradientShift {
@@ -1516,6 +1652,15 @@ pre[class*="language-"]:hover .code-copy-btn {
 
     #projects::before {
         animation: none !important;
+    }
+
+    .terminal-overlay {
+        display: none !important;
+    }
+    
+    .hero-title {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
 

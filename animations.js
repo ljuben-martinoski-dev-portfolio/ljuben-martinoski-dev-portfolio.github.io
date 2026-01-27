@@ -361,6 +361,137 @@
     }
 
     // ============================================
+    // Terminal Hacking Animation
+    // ============================================
+    function initTerminalAnimation() {
+        const terminalOverlay = document.querySelector('.terminal-overlay');
+        const heroTitle = document.querySelector('.hero-title');
+        const terminalLines = document.querySelectorAll('.terminal-line');
+        const progressFill = document.querySelector('.progress-fill');
+        const progressPercent = document.querySelector('.progress-percent');
+        
+        if (!terminalOverlay || !heroTitle) return;
+        
+        if (prefersReducedMotion()) {
+            terminalOverlay.classList.add('hidden');
+            heroTitle.classList.add('revealed');
+            return;
+        }
+        
+        // Random characters for phase 1
+        const randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+        
+        // Code snippets for phase 2
+        const codeSnippets = [
+            '> npm install --save-dev',
+            '> git clone https://github.com/...',
+            '> const app = initialize();',
+            '> document.createElement("div");',
+            '> window.location.hostname',
+            '> script type="text/javascript"',
+            '> function init() { return true; }',
+            '> console.log("Loading...");'
+        ];
+        
+        let currentPhase = 0;
+        let progress = 0;
+        const totalDuration = 3000; // 3 seconds
+        const progressInterval = 30; // Update every 30ms
+        
+        // Phase 1: Random characters (0-40% progress)
+        function phase1RandomChars() {
+            const line1 = terminalLines[0];
+            if (!line1) return;
+            
+            line1.classList.add('visible');
+            let charIndex = 0;
+            const targetLength = 40;
+            const cycles = 20; // Number of random character cycles
+            
+            const randomInterval = setInterval(() => {
+                if (charIndex < cycles) {
+                    let randomText = '';
+                    for (let i = 0; i < targetLength; i++) {
+                        randomText += randomChars[Math.floor(Math.random() * randomChars.length)];
+                    }
+                    line1.textContent = randomText;
+                    charIndex++;
+                } else {
+                    clearInterval(randomInterval);
+                }
+            }, 50);
+        }
+        
+        // Phase 2: Code snippets (40-80% progress)
+        function phase2CodeSnippets() {
+            const line2 = terminalLines[1];
+            if (!line2) return;
+            
+            line2.classList.add('visible');
+            let snippetIndex = 0;
+            
+            const snippetInterval = setInterval(() => {
+                if (snippetIndex < codeSnippets.length) {
+                    line2.textContent = codeSnippets[snippetIndex];
+                    snippetIndex++;
+                } else {
+                    clearInterval(snippetInterval);
+                }
+            }, 200);
+        }
+        
+        // Phase 3: Final code line (80-100% progress)
+        function phase3FinalLine() {
+            const line3 = terminalLines[2];
+            if (!line3) return;
+            
+            line3.classList.add('visible');
+            line3.textContent = '> Successfully loaded portfolio...';
+        }
+        
+        // Progress bar animation
+        function updateProgress() {
+            const progressUpdateInterval = setInterval(() => {
+                progress += (100 / (totalDuration / progressInterval));
+                
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(progressUpdateInterval);
+                    
+                    // Hide terminal and reveal title
+                    window.setTimeout(() => {
+                        terminalOverlay.classList.add('hidden');
+                        window.setTimeout(() => {
+                            heroTitle.classList.add('revealed');
+                        }, 300);
+                    }, 500);
+                }
+                
+                if (progressFill) progressFill.style.width = progress + '%';
+                if (progressPercent) progressPercent.textContent = Math.floor(progress) + '%';
+                
+                // Phase transitions
+                if (progress >= 40 && currentPhase === 0) {
+                    currentPhase = 1;
+                    phase2CodeSnippets();
+                }
+                if (progress >= 80 && currentPhase === 1) {
+                    currentPhase = 2;
+                    phase3FinalLine();
+                }
+            }, progressInterval);
+        }
+        
+        // Start animation after page load
+        window.addEventListener('load', () => {
+            window.setTimeout(() => {
+                phase1RandomChars();
+                updateProgress();
+            }, 500);
+        });
+    }
+
+    // ============================================
     // Initialize All Animations
     // ============================================
     function init() {
@@ -371,6 +502,7 @@
 
         checkReducedMotion();
         initPageLoader();
+        initTerminalAnimation();
         initHeroParticles();
         initTypewriter();
         initScrollAnimations();
