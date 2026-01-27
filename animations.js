@@ -353,11 +353,18 @@
         const loader = document.querySelector('.page-loader');
         if (!loader) return;
 
-        window.addEventListener('load', () => {
+        function hideLoader() {
             window.setTimeout(() => {
                 loader.classList.add('loaded');
             }, 1000);
-        });
+        }
+
+        // Check if page is already loaded
+        if (document.readyState === 'complete') {
+            hideLoader();
+        } else {
+            window.addEventListener('load', hideLoader);
+        }
     }
 
     // ============================================
@@ -483,12 +490,19 @@
         }
         
         // Start animation after page load
-        window.addEventListener('load', () => {
+        function startAnimation() {
             window.setTimeout(() => {
                 phase1RandomChars();
                 updateProgress();
             }, 500);
-        });
+        }
+
+        // Check if page is already loaded
+        if (document.readyState === 'complete') {
+            startAnimation();
+        } else {
+            window.addEventListener('load', startAnimation);
+        }
     }
 
     // ============================================
