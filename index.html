@@ -199,6 +199,21 @@
                         <a href="#" class="project-link">Im Vollbild ansehen</a>
                     </div>
 
+                    <div class="project-card" data-modal-target="python-password-manager-modal">
+                        <h3 class="project-title">Enterprise-Grade Password Manager</h3>
+                        <p class="project-description">
+                            Ein sicheres, lokal-first Passwortverwaltungssystem mit branchenüblichen Krypto-Verfahren. Fokus auf Sicherheit, Benutzerfreundlichkeit und vollständige Privatsphäre.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python 3.14</span>
+                            <span class="project-tag">Cryptography (Fernet)</span>
+                            <span class="project-tag">PyInstaller</span>
+                            <span class="project-tag">Colorama</span>
+                            <span class="project-tag">Tabulate</span>
+                        </div>
+                        <a href="#" class="project-link">Im Vollbild ansehen</a>
+                    </div>
+
                     <!-- COPY THIS BLOCK to add more projects -->
                     <!--
                     <div class="project-card" data-modal-target="[modal-id]">
@@ -454,6 +469,63 @@
         </div>
     </div>
 
+    <!-- Enterprise-Grade Password Manager Modal -->
+    <div id="python-password-manager-modal" class="project-modal">
+        <div class="modal-overlay" onclick="closeProjectModal('python-password-manager-modal')" ontouchstart="" style="touch-action: manipulation;"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProjectModal('python-password-manager-modal')">&times;</button>
+            <div class="modal-body">
+                <div class="modal-info">
+                    <h2 class="modal-title">Enterprise-Grade Password Manager</h2>
+                    <p class="modal-subtitle">
+                        Sicheres, lokal-first Passwortverwaltungssystem mit branchenüblichen Krypto-Verfahren. Fokus auf Sicherheit, Benutzerfreundlichkeit und vollständige Privatsphäre.
+                    </p>
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">Technische Umsetzung</h4>
+                        <ul class="modal-list">
+                            <li>Verschlüsselung: AES-256-CBC via Fernet (authentifizierte Verschlüsselung)</li>
+                            <li>Schlüsselableitung: PBKDF2-HMAC-SHA256 mit 480.000 Iterationen</li>
+                            <li>Sicherheit: Eindeutiges Salt pro Installation, kryptografisch sichere Zufallserzeugung (secrets-Modul)</li>
+                            <li>Architektur: Modulares Design mit Trennung (Verschlüsselung, Speicher, UI)</li>
+                            <li>Deployment: Standalone-Executable via PyInstaller für portablen Einsatz</li>
+                        </ul>
+                    </div>
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">Funktionen</h4>
+                        <ul class="modal-list">
+                            <li>Passwort-Generierung, Stärke-Analyse, Kategorieverwaltung</li>
+                            <li>Verschlüsselte Backup- und Wiederherstellungsfunktionen</li>
+                            <li>Umfassende Fehlerbehandlung, professionelle Terminal-UI</li>
+                        </ul>
+                    </div>
+                    <div class="modal-pills">
+                        <span class="project-tag">Python 3.14</span>
+                        <span class="project-tag">Cryptography (Fernet)</span>
+                        <span class="project-tag">PyInstaller</span>
+                        <span class="project-tag">Colorama</span>
+                        <span class="project-tag">Tabulate</span>
+                    </div>
+                </div>
+                <div class="modal-media">
+                    <div class="project-gallery" id="password-manager-gallery">
+                        <img src="assets/password-manager/code-view.png.png" alt="Passwort-Generator Code" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="generate_password mit secrets-Modul - Klicken zum Vergrößern">
+                        <img src="assets/password-manager/readme.png.png" alt="README Secure Password Manager" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Projektbeschreibung und Features - Klicken zum Vergrößern">
+                        <img src="assets/password-manager/terminal-setup.png.png" alt="Terminal Setup Master-Passwort" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Ersteinrichtung und Master-Passwort - Klicken zum Vergrößern">
+                    </div>
+                    <div class="image-error-message" id="password-manager-error-msg" style="display: none;">
+                        <p><strong>Hinweis: Bilder werden geladen...</strong></p>
+                        <p>Stellen Sie sicher, dass die Bilder im Ordner <code>assets/password-manager/</code> vorhanden sind:</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                            <li>• code-view.png.png</li>
+                            <li>• readme.png.png</li>
+                            <li>• terminal-setup.png.png</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Image Lightbox Modal -->
     <div id="image-lightbox" class="image-lightbox">
         <div class="lightbox-overlay" onclick="closeImageLightbox()" ontouchstart="" style="touch-action: manipulation;"></div>
@@ -506,6 +578,19 @@
                 const warehouseErrorElements = warehouseGallery.querySelectorAll('div[style*="Bild nicht gefunden"]');
                 if (warehouseImages.length === 0 && warehouseErrorElements.length > 0) {
                     const errorMsg = document.getElementById('warehouse-error-msg');
+                    if (errorMsg) {
+                        errorMsg.style.display = 'block';
+                    }
+                }
+            }
+
+            // Check Password Manager gallery
+            const passwordManagerGallery = document.getElementById('password-manager-gallery');
+            if (passwordManagerGallery) {
+                const pmImages = passwordManagerGallery.querySelectorAll('img');
+                const pmErrorElements = passwordManagerGallery.querySelectorAll('div[style*="Bild nicht gefunden"]');
+                if (pmImages.length === 0 && pmErrorElements.length > 0) {
+                    const errorMsg = document.getElementById('password-manager-error-msg');
                     if (errorMsg) {
                         errorMsg.style.display = 'block';
                     }
