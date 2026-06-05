@@ -189,12 +189,15 @@
                     <div class="project-card" data-modal-target="version-control-modal">
                         <h3 class="project-title">Versionskontroll-Workflow</h3>
                         <p class="project-description">
-                            Git-Workflows, Branching-Strategien und Kollaborationspraktiken, die ich in der Ausbildung erarbeitet habe.
+                            Django-Webanwendung als interaktives Lernwerkzeug für professionelle Git-Praktiken — mit durchgängiger SOLID-Architektur und 20 Unit-Tests.
                         </p>
                         <div class="project-tags">
+                            <span class="project-tag">Python 3.14</span>
+                            <span class="project-tag">Django 6.0.6</span>
                             <span class="project-tag">Git</span>
-                            <span class="project-tag">GitHub</span>
-                            <span class="project-tag">Versionskontrolle</span>
+                            <span class="project-tag">SOLID</span>
+                            <span class="project-tag">SQLite</span>
+                            <span class="project-tag">Testing</span>
                         </div>
                         <a href="#" class="project-link">Im Vollbild ansehen</a>
                     </div>
@@ -452,18 +455,79 @@
 
     <!-- Version Control Workflow Modal -->
     <div id="version-control-modal" class="project-modal">
-        <div class="modal-overlay" onclick="closeProjectModal('version-control-modal')" ontouchstart=""></div>
+        <div class="modal-overlay" onclick="closeProjectModal('version-control-modal')" ontouchstart="" style="touch-action: manipulation;"></div>
         <div class="modal-content">
             <button class="modal-close" onclick="closeProjectModal('version-control-modal')">&times;</button>
-            <h2 class="modal-title">Versionskontroll-Workflow</h2>
-            <div class="coming-soon-content">
-                <div style="text-align: center; padding: 3rem 1rem;">
-                    <div style="font-size: 4rem; margin-bottom: 1rem;">📋</div>
-                    <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Demnächst verfügbar!</h3>
-                    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">
-                        Dokumentation und Beispiele von Git-Workflows, Branching-Strategien und Kollaborationspraktiken,
-                        die während der Softwareentwicklungs-Schulung erlernt wurden. Demnächst verfügbar!
+            <div class="modal-body">
+                <div class="modal-info">
+                    <h2 class="modal-title">Versionskontroll-Workflow</h2>
+                    <p class="modal-subtitle">
+                        Eine Django-Webanwendung als interaktives Lernwerkzeug für professionelle Git-Praktiken. Der Code demonstriert bewusst alle fünf SOLID-Prinzipien in einer realen Projektstruktur.
                     </p>
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">Hauptfunktionen</h4>
+                        <ul class="modal-list">
+                            <li>Übersicht über GitFlow, Trunk-Based Development und Feature Branch Workflow mit visuellen Vergleichen</li>
+                            <li>Commit-Konventionen nach dem Conventional Commits Standard — 10 Commit-Typen, Gut-/Schlecht-Beispiele</li>
+                            <li>Kollaborations-Guide: Pull Requests, Code Reviews, Merge-Konflikt-Auflösung</li>
+                            <li>Ressourcen-Seite mit kuratierten Lernlinks und SOLID-Prinzipien-Referenz</li>
+                        </ul>
+                    </div>
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">Technischer Stack</h4>
+                        <ul class="modal-list">
+                            <li>Backend: Python 3.14 / Django 6.0.6, SQLite</li>
+                            <li>Frontend: Django Templates (server-seitig gerendert)</li>
+                            <li>Architektur: SOLID-Prinzipien (SRP, OCP, LSP, ISP, DIP) durchgängig umgesetzt</li>
+                        </ul>
+                    </div>
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">Testing &amp; Debugging</h4>
+                        <ul class="modal-list">
+                            <li>20 Unit-Tests geschrieben — Ergebnis: 17/20 bestanden</li>
+                            <li>Tests 16, 17 und 18 schlugen fehl: Python 3.14 veränderte das Verhalten von <code>super().__copy__()</code> mit <code>__slots__</code>, was Djangos internes <code>Context.__copy__()</code> in <code>template/context.py</code> crashen ließ</li>
+                            <li>Root Cause: Django 5.0 wurde nie für Python 3.14 ausgelegt</li>
+                            <li>Fix: Upgrade von Django 5.0 → 6.0.6 (erste Version mit offiziellem Python-3.14-Support) — danach 20/20 Tests grün</li>
+                        </ul>
+                    </div>
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">Stärken</h4>
+                        <ul class="modal-list">
+                            <li><code>views.py</code> importiert nur <code>WorkflowProvider</code> — keine konkreten Services (Dependency Inversion)</li>
+                            <li><code>WorkflowFactory</code> erweiterbar ohne bestehenden Code zu ändern (Open/Closed)</li>
+                            <li>Reales Debugging-Erlebnis: Kompatibilitätsproblem eigenständig analysiert und behoben</li>
+                        </ul>
+                    </div>
+                    <div class="modal-pills">
+                        <span class="project-tag">Python 3.14</span>
+                        <span class="project-tag">Django 6.0.6</span>
+                        <span class="project-tag">Git</span>
+                        <span class="project-tag">SOLID</span>
+                        <span class="project-tag">SQLite</span>
+                        <span class="project-tag">Testing</span>
+                    </div>
+                </div>
+                <div class="modal-media">
+                    <div class="project-gallery" id="version-control-gallery">
+                        <img src="assets/versionskontroll_workflow/Django-GUI.png" alt="Django GUI Übersicht" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Django-Webanwendung — Git-Workflow-Übersicht - Klicken zum Vergrößern">
+                        <img src="assets/versionskontroll_workflow/Django-GUI-runing%20on%20localhost.png" alt="Django auf localhost" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Anwendung läuft auf localhost - Klicken zum Vergrößern">
+                        <img src="assets/versionskontroll_workflow/models.py.png" alt="models.py SOLID-Architektur" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Modellstruktur mit SOLID-Prinzipien - Klicken zum Vergrößern">
+                        <img src="assets/versionskontroll_workflow/test.py.png" alt="Unit-Tests" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Unit-Test-Implementierung - Klicken zum Vergrößern">
+                        <img src="assets/versionskontroll_workflow/20%20test%20run-mit%203%20Fehler.png" alt="Testlauf mit 3 Fehlern" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="17/20 Tests bestanden — 3 Kompatibilitätsfehler - Klicken zum Vergrößern">
+                        <img src="assets/versionskontroll_workflow/2020%20Test%20Passed.png" alt="Alle 20 Tests bestanden" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="20/20 Tests grün nach Django-Upgrade - Klicken zum Vergrößern">
+                    </div>
+                    <div class="image-error-message" id="version-control-error-msg" style="display: none;">
+                        <p><strong>Hinweis: Bilder werden geladen...</strong></p>
+                        <p>Stellen Sie sicher, dass die Bilder im Ordner <code>assets/versionskontroll_workflow/</code> vorhanden sind:</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                            <li>• Django-GUI.png</li>
+                            <li>• Django-GUI-runing on localhost.png</li>
+                            <li>• models.py.png</li>
+                            <li>• test.py.png</li>
+                            <li>• 20 test run-mit 3 Fehler.png</li>
+                            <li>• 2020 Test Passed.png</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -591,6 +655,19 @@
                 const pmErrorElements = passwordManagerGallery.querySelectorAll('div[style*="Bild nicht gefunden"]');
                 if (pmImages.length === 0 && pmErrorElements.length > 0) {
                     const errorMsg = document.getElementById('password-manager-error-msg');
+                    if (errorMsg) {
+                        errorMsg.style.display = 'block';
+                    }
+                }
+            }
+
+            // Check Version Control gallery
+            const versionControlGallery = document.getElementById('version-control-gallery');
+            if (versionControlGallery) {
+                const vcImages = versionControlGallery.querySelectorAll('img');
+                const vcErrorElements = versionControlGallery.querySelectorAll('div[style*="Bild nicht gefunden"]');
+                if (vcImages.length === 0 && vcErrorElements.length > 0) {
+                    const errorMsg = document.getElementById('version-control-error-msg');
                     if (errorMsg) {
                         errorMsg.style.display = 'block';
                     }
