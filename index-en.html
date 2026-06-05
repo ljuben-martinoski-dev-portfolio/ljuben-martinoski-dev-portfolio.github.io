@@ -297,6 +297,22 @@
                         <a href="#" class="project-link">Open fullscreen</a>
                     </div>
 
+                    <div class="project-card" data-modal-target="maschine-service-modal">
+                        <h3 class="project-title">Machine Service Management System with Ready-Gate Validation</h3>
+                        <p class="project-description">
+                            Django-based service ticket system for machine parks with a structured 6-stage workflow, Ready-Gate validation, and automatically generated checklists.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Django</span>
+                            <span class="project-tag">SQLite</span>
+                            <span class="project-tag">Backend</span>
+                            <span class="project-tag">Testing</span>
+                            <span class="project-tag">Admin</span>
+                        </div>
+                        <a href="#" class="project-link">Open fullscreen</a>
+                    </div>
+
                     <!-- COPY THIS BLOCK to add more projects -->
                     <!--
                     <div class="project-card" data-modal-target="[modal-id]">
@@ -670,6 +686,78 @@
         </div>
     </div>
 
+    <!-- Machine Service Management System Modal -->
+    <div id="maschine-service-modal" class="project-modal">
+        <div class="modal-overlay" onclick="closeProjectModal('maschine-service-modal')" ontouchstart="" style="touch-action: manipulation;"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProjectModal('maschine-service-modal')">&times;</button>
+            <div class="modal-body">
+                <div class="modal-info">
+                    <h2 class="modal-title">Machine Service Management System with Ready-Gate Validation</h2>
+                    <p class="modal-subtitle">
+                        A Django backend project for managing machine service tickets in an industrial environment. The focus is on workflow integrity, clean layer separation (Models → Validators → Services), and automated quality assurance.
+                    </p>
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">Main Features</h4>
+                        <ul class="modal-list">
+                            <li>6-stage ticket workflow: NEW → GATHER INFORMATION → READY → IN PROGRESS → RESOLVED → CLOSED</li>
+                            <li>Ready-Gate validation: tickets can only be set to READY when title, description, symptoms, and occurrence date are complete — with a percentage completeness score (0–100%)</li>
+                            <li>Automatic checklist creation when a ticket is created, based on template presets per ticket type (incident, request, change)</li>
+                            <li>Business rules via validators: no direct jump from NEW to RESOLVED, CRITICAL tickets cannot be downgraded to LOW</li>
+                            <li>3 service classes (<code>TicketService</code>, <code>MachineService</code>, <code>ChecklistService</code>) with statistics dashboard, overdue detection (&gt;30 days), and completion rate calculation</li>
+                            <li>Custom Django admin actions and full admin interface</li>
+                        </ul>
+                    </div>
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">Tech Stack</h4>
+                        <ul class="modal-list">
+                            <li>Backend: Python 3.14 / Django 6.0.4, SQLite</li>
+                            <li>Architecture: separation of concerns — <code>models.py</code> (structure), <code>validators.py</code> (rules), <code>services.py</code> (business logic)</li>
+                            <li>Documentation: ER diagram, class diagram, activity diagram, test protocol (25 test cases), cost-benefit analysis</li>
+                        </ul>
+                    </div>
+                    <div class="modal-section">
+                        <h4 class="modal-section-title">Testing</h4>
+                        <ul class="modal-list">
+                            <li>19 unit tests written — all passed (19/19)</li>
+                            <li>Tests cover models, Ready-Gate validation, status transitions, priority rules, and service methods</li>
+                        </ul>
+                    </div>
+                    <div class="modal-pills">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Django</span>
+                        <span class="project-tag">SQLite</span>
+                        <span class="project-tag">Backend</span>
+                        <span class="project-tag">Testing</span>
+                        <span class="project-tag">Admin</span>
+                    </div>
+                </div>
+                <div class="modal-media">
+                    <div class="project-gallery" id="maschine-service-gallery">
+                        <img src="assets/maschine_service/maschinen_liste.png.png" alt="Machine list Django Admin" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Machine list in Django admin interface - Click to enlarge">
+                        <img src="assets/maschine_service/Ready-Gate-Validierungsfehler%20bei%20unvollst%C3%A4ndigem%20Ticket.png" alt="Ready-Gate validation error" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Ready-Gate blocks incomplete ticket - Click to enlarge">
+                        <img src="assets/maschine_service/ER-Diagramm.png" alt="ER diagram" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Entity-relationship diagram - Click to enlarge">
+                        <img src="assets/maschine_service/Klassendiagramm-Maschine-Servicewervaltungssystem.png" alt="Class diagram" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Class diagram of the service ticket system - Click to enlarge">
+                        <img src="assets/maschine_service/Aktivit%C3%A4tsdiagramm.png" alt="Activity diagram" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Activity diagram of the ticket workflow - Click to enlarge">
+                        <img src="assets/maschine_service/22%20bestandene%20Unit-Tests%20im%20Terminal.png" alt="Unit tests in terminal" onclick="openImageLightbox(this.src, this.alt)" onerror="handleImageError(this)" title="Passing unit tests in terminal - Click to enlarge">
+                    </div>
+                    <div class="image-error-message" id="maschine-service-error-msg" style="display: none;">
+                        <p><strong>Note: Images are loading...</strong></p>
+                        <p>Make sure the images are in the <code>assets/maschine_service/</code> folder:</p>
+                        <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                            <li>• maschinen_liste.png.png</li>
+                            <li>• Ready-Gate-Validierungsfehler bei unvollständigem Ticket.png</li>
+                            <li>• ER-Diagramm.png</li>
+                            <li>• Klassendiagramm-Maschine-Servicewervaltungssystem.png</li>
+                            <li>• Aktivitätsdiagramm.png</li>
+                            <li>• 22 bestandene Unit-Tests im Terminal.png</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Image Lightbox Modal -->
     <div id="image-lightbox" class="image-lightbox">
         <div class="lightbox-overlay" onclick="closeImageLightbox()" ontouchstart=""></div>
@@ -748,6 +836,19 @@
                 const vcErrorElements = versionControlGallery.querySelectorAll('div[style*="Image not found"]');
                 if (vcImages.length === 0 && vcErrorElements.length > 0) {
                     const errorMsg = document.getElementById('version-control-error-msg');
+                    if (errorMsg) {
+                        errorMsg.style.display = 'block';
+                    }
+                }
+            }
+
+            // Check Machine Service gallery
+            const maschineServiceGallery = document.getElementById('maschine-service-gallery');
+            if (maschineServiceGallery) {
+                const msImages = maschineServiceGallery.querySelectorAll('img');
+                const msErrorElements = maschineServiceGallery.querySelectorAll('div[style*="Image not found"]');
+                if (msImages.length === 0 && msErrorElements.length > 0) {
+                    const errorMsg = document.getElementById('maschine-service-error-msg');
                     if (errorMsg) {
                         errorMsg.style.display = 'block';
                     }
